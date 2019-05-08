@@ -1,5 +1,4 @@
-img {
-  border: 1px solid #ddd;
+.img-fluid {
+  border: 4px solid #ddd;
   border-radius: 4px;
-  padding: 5px;
 }
