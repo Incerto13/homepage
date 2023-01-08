@@ -29,7 +29,7 @@
 
   </head>
 
-  <body onload="getYear()" id="page-top">
+  <body onload="calDynamicNumbers()" id="page-top">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -81,7 +81,7 @@
             <h2 class="section-heading text-white">I've got what you need!</h2>
             <hr class="light my-4">
             <p class="text-faded mb-4">
-                Over 6 years of hands-on software development experience. I've worked for Fortune 500 companies, 
+                Over <span id="yearsOfExperience"></span> years of hands-on software development experience. I've worked for Fortune 500 companies, 
                 startups and non-profits across a range of industries such as manufacturing, logistics, financial services,
                 healthcare and SAS.
             </p>
@@ -723,10 +723,12 @@
       </div>
     </section>
 
-      <!-- Copyright Statement -->
+
+      <!-- Generate Dynamic Numbers -->
     <script>
-          function getYear() {
+          function calDynamicNumbers() {
             document.getElementById("year").innerHTML = new Date().getFullYear();
+            document.getElementById("yearsOfExperience").innerHTML = new Date().getFullYear() - 2012;
           }
     </script>
     
