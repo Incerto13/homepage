@@ -10,29 +10,21 @@
 }
 
 .project-name a {
-    color: navy;
+    color: gray;
 }
 
 .project-code a {
-  color: navy;
+  color: gray;
 }
 
 .project-name a:hover {
-  color: black;
+  color: navy;
   text-decoration: underline;
 }
 
 .project-code a:hover {
-  color: black;
+  color: navy;
   text-decoration: underline;
-}
-
-.project-name a:visited {
-  color: purple;
-}
-
-.project-code a:visited {
-  color: purple;
 }
 
 
