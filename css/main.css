@@ -10,11 +10,11 @@
 }
 
 .project-name a {
-    color: gray;
+    color: black;
 }
 
 .project-code a {
-  color: gray;
+  color: black;
 }
 
 .project-name a:hover {
