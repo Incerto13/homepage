@@ -8,3 +8,32 @@
   -webkit-border-radius: 30px !important;
   border-radius: 30px !important;
 }
+
+.project-name a {
+    color: navy;
+}
+
+.project-code a {
+  color: navy;
+}
+
+.project-name a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+.project-code a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+.project-name a:visited {
+  color: purple;
+}
+
+.project-code a:visited {
+  color: purple;
+}
+
+
+
