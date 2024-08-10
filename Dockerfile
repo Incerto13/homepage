@@ -9,6 +9,6 @@ COPY . /app
     
 #stage 2
 FROM nginx:alpine
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+# COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build-step /app/homepage /usr/share/nginx/html
 EXPOSE 80:80
