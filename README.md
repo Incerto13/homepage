@@ -1,28 +1,41 @@
-# [Start Bootstrap - Creative](https://startbootstrap.com/template-overviews/creative/)
 
-[Creative](http://startbootstrap.com/template-overviews/creative/) is a one page creative theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).
+## Installation
+```bash
+# requirements: node 12
+npm install
+```
 
-## Preview
+## Running locally
+```bash
+# only make edits to index-no-links.html
+npm run dev
+# will server index.html on dev server
+```
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-[![Creative Preview](https://startbootstrap.com/assets/img/templates/creative.jpg)](https://blackrockdigital.github.io/startbootstrap-creative/)
+## Build locally
+```bash
+npm run buld
+# will build index.html
+```
 
-**[View Live Preview](https://blackrockdigital.github.io/startbootstrap-creative/)**
+## Running in docker (local dev)
+```bash
+bash run-docker-dev.sh
+```
 
-## Status
+## Running in docker
+```bash
+bash run-docker.sh
+```
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/BlackrockDigital/startbootstrap-creative/master/LICENSE)
-[![npm version](https://img.shields.io/npm/v/startbootstrap-creative.svg)](https://www.npmjs.com/package/startbootstrap-creative)
-[![Build Status](https://travis-ci.org/BlackrockDigital/startbootstrap-creative.svg?branch=master)](https://travis-ci.org/BlackrockDigital/startbootstrap-creative)
-[![dependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-creative/status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-creative)
-[![devDependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-creative/dev-status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-creative?type=dev)
 
-## Download and Installation
+#### Font Awesome Icons
+Can be found here: [https://fontawesome.com/v5/search?o=r&m=free](https://fontawesome.com/v5/search?o=r&m=free)
+- app currently has fontawesome vv5 installed, but for v6 icons you can download the svg and import it as an img tag (see golang for an example)
+- other tech icons can be found here: [https://techicons.dev/icons](https://techicons.dev/icons)
 
-To begin using this template, choose one of the following options to get started:
-* [Download the latest release on Start Bootstrap](https://startbootstrap.com/template-overviews/creative/)
-* Install via npm: `npm i startbootstrap-creative`
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-creative.git`
-* [Fork, Clone, or Download on GitHub](https://github.com/BlackrockDigital/startbootstrap-creative)
+
 
 ## Usage
 
@@ -48,7 +61,6 @@ You must have npm and Gulp installed globally on your machine in order to use th
 
 Start Bootstrap has a public Slack channel which is a great place to ask questions about this template and all things related to Start Bootstrap.
 
-**[Click here to join the Slack channel!](https://startbootstrap-slack.herokuapp.com/)**
 
 ## Bugs and Issues
 

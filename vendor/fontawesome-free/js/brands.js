@@ -20,6 +20,7 @@ var WINDOW = _WINDOW;
 
 
 
+
 var IS_IE = ~userAgent.indexOf('MSIE') || ~userAgent.indexOf('Trident/');
 
 var NAMESPACE_IDENTIFIER = '___FONT_AWESOME___';
