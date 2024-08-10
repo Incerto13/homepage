@@ -1,14 +1,13 @@
 #stage 1
 FROM node:12 as build-step
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # copy files and install dependencies
-COPY package.json /app
+COPY package.json /usr/src/app/
 RUN npm install
-COPY . /app
+COPY . .
     
 #stage 2
 FROM nginx:alpine
-# COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build-step /app/homepage /usr/share/nginx/html
+COPY --from=build-step /usr/src/app/homepage /usr/share/nginx/html
 EXPOSE 80:80
