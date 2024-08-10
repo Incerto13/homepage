@@ -9,5 +9,4 @@ COPY . .
     
 #stage 2
 FROM nginx:alpine
-COPY --from=build-step /usr/src/app/homepage /usr/share/nginx/html
-EXPOSE 80:80
+COPY --from=build-step /usr/src/app /usr/share/nginx/html
