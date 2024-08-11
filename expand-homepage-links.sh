@@ -8,7 +8,7 @@ fi
 
 echo expanding links...
 # Load environment variables from .env file
-[ ! -f ../.env ] || export $(grep -v '^#' ../.env | xargs)
+[ ! -f .env ] || export $(grep -v '^#' .env | xargs)
 
 while read line; do 
     # if [[ "$line" =~ '^${' ]]

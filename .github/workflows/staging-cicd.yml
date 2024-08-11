@@ -25,5 +25,4 @@ jobs:
       - name: Build and Push to Docker Hub
         run: |
           bash run-docker.sh 
-          docker push incerto13/homepage:staging-latest 
-          docker push incerto13/homepage:staging-latest 
+          docker push incerto13/homepage:staging-latest

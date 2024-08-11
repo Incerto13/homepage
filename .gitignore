@@ -1,5 +1,6 @@
 node_modules
 .DS_Store
 index.html
+vendor/fontawesome-free/package.json
 
 
