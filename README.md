@@ -15,8 +15,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Build locally
 ```bash
-npm run buld
-# will build index.html
+npm run buld # will build index.html
 ```
 
 ## Running in docker (local dev)

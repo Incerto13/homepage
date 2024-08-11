@@ -6,6 +6,8 @@ WORKDIR /usr/src/app
 COPY package.json /usr/src/app/
 RUN npm install
 COPY . .
+# run link-expansion script and then build index.html
+RUN npm run build
     
 #stage 2
 FROM nginx:alpine
