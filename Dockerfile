@@ -4,6 +4,7 @@ WORKDIR /usr/src/app
 
 # copy files and install dependencies
 COPY package.json /usr/src/app/
+# is install necessary?
 RUN npm install
 COPY . .
     
