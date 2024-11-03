@@ -9,7 +9,7 @@ npm install
 ```bash
 # only make edits to index-no-links.html
 npm run dev
-# will server index.html on dev server
+# will serve index.html on dev server
 ```
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
@@ -20,7 +20,7 @@ npm run build # will build index.html
 
 ## Running in docker (local dev)
 ```bash
-bash run-docker-dev.sh
+bash run-docker.dev.sh
 ```
 
 ## Running in docker

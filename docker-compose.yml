@@ -1,12 +1,12 @@
 services:
 
   homepage:
+    image: incerto13/homepage:${ENV}-latest
     container_name: homepage
-    environment:
-      ENV: ${ENV}
+    # environment:
+    #   ENV: ${ENV}
     build:
       context: .
       dockerfile: Dockerfile
-    image: incerto13/homepage:${ENV}-latest
-    ports:
-    - 8080:80
+    # ports:
+    # - 8080:80

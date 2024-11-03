@@ -27,7 +27,7 @@
     },
     "scripts": {
         "preinstall": "npx npm-force-resolutions",
-        "dev": "bash run-dev.sh",
+        "dev": "bash run-local.dev.sh",
         "build": "bash run-build.sh"
     },
     "dependencies": {
