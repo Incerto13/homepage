@@ -31,8 +31,9 @@ bash run-docker.sh
 
 #### Font Awesome Icons
 Can be found here: [https://fontawesome.com/v5/search?o=r&m=free](https://fontawesome.com/v5/search?o=r&m=free)
-- app currently has fontawesome vv5 installed, but for v6 icons you can download the svg and import it as an img tag (see golang for an example)
-- other tech icons can be found here: [https://techicons.dev/icons](https://techicons.dev/icons)
+- app currently has fontawesome vv5 installed, but for v6 icons you can download the svg and import it as an img tag (see bash or golang for an example)
+- other tech icons can be found here: [https://techicons.dev/icons](https://techicons.dev/icons) or here: [https://www.svgrepo.com](https://www.svgrepo.com) or here: [https://www.awsicon.com](https://www.awsicon.com)
+- if you need to change the svg's fill color, open up with text editor and fill in with this orange: #F05F40
 
 
 
