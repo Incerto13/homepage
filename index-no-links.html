@@ -1044,25 +1044,89 @@
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
             <h2 class="section-heading">Let's Get In Touch!</h2>
-              <hr class="my-4"> <br/> <br/>
+            <hr class="my-4">
+            <p class="text-muted mb-5">Have a question or want to work together? Send a message below and I'll get back to you.</p>
           </div>
         </div>
+
         <div class="row">
 
-          <div class="col-lg-4 mx-auto text-center">
+          <!-- Contact form (delivered via Web3Forms; no email address is exposed on this page) -->
+          <div class="col-lg-7 mb-5 mb-lg-0">
+            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+              <!-- Web3Forms public access key. NOT an email address. Get yours at https://web3forms.com (it maps to your inbox on their servers). Replace the placeholder below. -->
+              <input type="hidden" name="access_key" value="962bf1ab-723c-4145-881f-864a87d09525">
+              <input type="hidden" name="subject" value="New message from incertotech.com">
+              <input type="hidden" name="from_name" value="incertotech.com contact form">
+              <!-- Honeypot: bots fill this hidden field; Web3Forms then silently drops the submission. -->
+              <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px;">
+
+              <div class="form-group">
+                <label class="sr-only" for="cf-name">Your name</label>
+                <input type="text" id="cf-name" name="name" class="form-control form-control-lg" placeholder="Your name" required>
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="cf-email">Your email</label>
+                <input type="email" id="cf-email" name="email" class="form-control form-control-lg" placeholder="Your email" required>
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="cf-message">Your message</label>
+                <textarea id="cf-message" name="message" rows="5" class="form-control form-control-lg" placeholder="Your message" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-xl">Send message</button>
+              <p id="contactResult" class="mt-3 mb-0" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <!-- QR code + GitHub -->
+          <div class="col-lg-4 offset-lg-1 text-center">
+            <div class="mb-4">
+              <img src="img/contact-qr.svg" alt="QR code linking to this contact form" width="180" height="180" class="img-fluid">
+              <p class="text-muted mt-2 mb-0">Scan to open this form on your phone</p>
+            </div>
             <div style="display: inline-block;">
               <i class="fab fa-github fa-3x mb-3 sr-contact-2"></i>
               <p><a href="https://github.com/Incerto13" target="_blank">Incerto13</a></p>
             </div>
           </div>
-          <!-- <div class="col-lg-4 mr-auto text-center">
-            <i class="fas fa-envelope fa-3x mb-3 sr-contact-3"></i>
-            <p><a href="mailto:adekoya@gmail.com" target="_blank">adekoya@gmail.com</a></p>
-          </div> -->
+
         </div>
 
       </div>
     </section>
+
+    <!-- Contact form submit handler (AJAX so the visitor stays on the page) -->
+    <script>
+      (function () {
+        var form = document.getElementById('contactForm');
+        if (!form) return;
+        var result = document.getElementById('contactResult');
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          result.style.color = '';
+          result.innerHTML = 'Sending...';
+          fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          }).then(function (res) {
+            return res.json().then(function (json) { return { ok: res.ok, json: json }; });
+          }).then(function (r) {
+            if (r.ok) {
+              result.style.color = '#28a745';
+              result.innerHTML = 'Thanks! Your message has been sent.';
+              form.reset();
+            } else {
+              result.style.color = '#dc3545';
+              result.innerHTML = (r.json && r.json.message) ? r.json.message : 'Something went wrong. Please try again.';
+            }
+          }).catch(function () {
+            result.style.color = '#dc3545';
+            result.innerHTML = 'Network error. Please try again.';
+          });
+        });
+      })();
+    </script>
 
 
       <!-- Generate Dynamic Numbers -->
