@@ -1,28 +1,434 @@
-.img-fluid {
-  border: 2px solid #ddd;
-  border-radius: 15px;
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500;600&display=swap');
+
+/* ==========================================================================
+   main.css — site-specific overrides on top of the Creative theme
+   (css/creative.min.css). Loaded last, plain CSS, no build step.
+
+   The portfolio markup is unchanged: each project is still
+     <div class="col-lg-4 col-sm-6">
+       <div class="portfolio-box"> <img class="img-fluid" src="..."> <caption…> </div>
+     </div>
+   Add, remove or swap projects exactly as before. Any thumbnail size or aspect
+   ratio works; tiles crop to the same 13:7 frame from the top of the image.
+   For crisp tiles on retina screens, export thumbnails at 1300x700.
+   ========================================================================== */
+
+:root {
+  --accent: #F05F40;          /* theme primary */
+  --ink: #161616;
+  --paper: #f3efe6;
+  /* Type system: serif for display, grotesk for reading/UI, mono for labels. */
+  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Instrument Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
 }
 
-.img-link:hover {
-  -moz-border-radius: 30px !important;
-  -webkit-border-radius: 30px !important;
-  border-radius: 30px !important;
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-.project-name a {
-    color: navy;
+/* ───────────────────────────── typography ─────────────────────────────
+   Replaces the theme's Open Sans (headings/UI) + Merriweather (body). */
+
+body,
+p,
+.text-faded,
+.text-muted,
+h1, h2, h3, h4, h5, h6,
+#mainNav,
+.form-control {
+  font-family: var(--font-sans);
+}
+body { color: var(--ink); }
+p { font-size: 18px; line-height: 1.6; }
+
+/* Display: name + every section heading in the serif. */
+.masthead h1,
+.section-heading {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  text-transform: none !important;
+}
+.masthead h1 strong { font-weight: 400; }
+.section-heading {
+  font-size: clamp(40px, 5vw, 60px);
+  line-height: 1.05;
+}
+/* header.masthead matches the theme's selector so these win at every breakpoint */
+header.masthead h1 {
+  font-size: clamp(64px, 9vw, 132px);
+  line-height: 0.95;
+}
+header.masthead p {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.005em;
 }
 
-.project-code a {
-  color: navy;
+/* Pull quote above the contact section reads as an editorial quote. */
+section.bg-dark h5 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.25;
+  letter-spacing: -0.005em;
 }
 
-.project-name a:hover {
-  color: white;
-  text-decoration: underline;
+/* Labels and chrome in the mono. */
+#mainNav .nav-link {
+  font-family: var(--font-mono);
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em;
+}
+.service-box h3 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0;
 }
 
-.project-code a:hover {
-  color: white;
-  text-decoration: underline;
+hr {
+  border-width: 3px;
+  border-radius: 0;
 }
+
+/* ───────────────────────────── buttons ─────────────────────────────
+   Square, ink-bordered, hard offset shadow — same language as the
+   portfolio tiles. */
+.btn {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  border-radius: 0 !important;
+  border: 1.5px solid var(--ink) !important;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease, color .12s ease;
+}
+.btn-xl {
+  font-size: 13px;
+  padding: 1.1rem 2.2rem;
+}
+.btn:hover,
+.btn:focus {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink) !important;
+}
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus { color: var(--ink); }
+.btn-light { background: var(--paper); color: var(--ink); }
+
+/* Technical Expertise icons: gentle lift on hover */
+.service-box {
+  transition: transform .2s ease;
+}
+.service-box:hover {
+  transform: translateY(-3px);
+}
+
+/* Contact form fields match the square, ink-ruled look. */
+#contact .form-control {
+  border-radius: 0;
+  border: 1.5px solid var(--ink);
+  background: #fff;
+}
+#contact .form-control:focus {
+  border-color: var(--accent);
+  box-shadow: 4px 4px 0 var(--accent);
+}
+
+/* Contact QR code: clean card instead of the old portfolio border */
+#contact img[src*="contact-qr"] {
+  padding: 10px;
+  background: #fff;
+  border: 1.5px solid #161616;
+  border-radius: 0;
+  box-shadow: 5px 5px 0 var(--accent);
+}
+
+/* ───────────────────────────── portfolio ─────────────────────────────
+   Editorial / Swiss-grid direction: drafting-paper background, square tiles
+   with a hard ink border, numbered entries, a display serif for titles and a
+   monospace for labels. Hover lifts the tile onto a solid offset shadow
+   (neo-brutalist) and slides a paper caption card up over the screenshot.
+   Numbers come from a CSS counter, so adding/removing/reordering projects
+   renumbers automatically. */
+
+#portfolio {
+  --rule: rgba(22, 22, 22, 0.07);
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--rule) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+  background-size: 28px 28px;
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  padding: 64px 0 !important;
+}
+#portfolio > .container-fluid {
+  max-width: 1320px;
+  padding: 0 14px !important;
+}
+#portfolio .row.no-gutters {
+  counter-reset: project;
+}
+#portfolio .row.no-gutters > [class*="col-"] {
+  padding: 14px;
+}
+
+/* ── section header: "Portfolio" eyebrow + "Selected Work" ── */
+#portfolio .portfolio-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 0 14px 18px;
+  padding-bottom: 14px;
+  border-bottom: 1.5px solid var(--ink);
+}
+#portfolio .portfolio-header .section-heading {
+  margin: 0;
+  color: var(--ink);
+}
+#portfolio .portfolio-header .eyebrow {
+  order: 2;
+  font: 500 12px/1 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(22, 22, 22, 0.6);
+}
+#portfolio .portfolio-header .eyebrow::before {
+  content: "\2193  ";
+  color: var(--accent);
+}
+
+/* ── tile ── */
+#portfolio .portfolio-box {
+  counter-increment: project;
+  max-width: none;
+  overflow: hidden;
+  background: #fff;
+  border: 1.5px solid var(--ink);
+  border-radius: 0;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+#portfolio .portfolio-box:hover,
+#portfolio .portfolio-box:focus-within {
+  transform: translate(-5px, -5px);
+  box-shadow: 7px 7px 0 var(--accent);
+}
+
+/* entry number, top-left, like a figure label in a printed catalogue */
+#portfolio .portfolio-box::before {
+  content: counter(project, decimal-leading-zero);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  padding: 4px 9px 3px;
+  font: 500 12px/1 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  letter-spacing: 0.04em;
+  color: var(--paper);
+  background: var(--ink);
+}
+
+#portfolio .portfolio-box img.img-fluid {
+  display: block;
+  width: 100%;
+  aspect-ratio: 13 / 7;
+  object-fit: cover;
+  object-position: top center;
+  border: 0;
+  border-radius: 0;
+  filter: grayscale(0.35) contrast(1.03);
+  transition: filter .3s ease;
+}
+#portfolio .portfolio-box:hover img.img-fluid,
+#portfolio .portfolio-box:focus-within img.img-fluid {
+  filter: none;
+}
+
+/* The two Swagger screenshots are cropped tight to the left edge ("Nest.js"
+   gets clipped); give them a white mat inside the frame. */
+#portfolio .portfolio-box img.img-fluid[src*="nest-to-do-api"],
+#portfolio .portfolio-box img.img-fluid[src*="nest-course-admin-api"] {
+  padding: 26px 22px 0 34px;
+  background: #fff;
+  object-position: left top;
+}
+
+/* ── caption: a paper card that slides up from the bottom edge ── */
+#portfolio .portfolio-box .portfolio-box-caption {
+  z-index: 2;
+  height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  border-top: 1.5px solid var(--ink);
+  transform: translateY(101%);
+  opacity: 1;
+  transition: transform .28s cubic-bezier(.2, .7, .2, 1);
+}
+#portfolio .portfolio-box:hover .portfolio-box-caption,
+#portfolio .portfolio-box:focus-within .portfolio-box-caption {
+  transform: translateY(0);
+}
+
+#portfolio .portfolio-box-caption-content {
+  top: auto !important;
+  bottom: 0;
+  transform: none !important;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  padding: 22px 22px 20px;
+  text-align: left !important;
+}
+
+/* title first, big serif */
+#portfolio .project-name {
+  order: 0;
+  flex-basis: 100%;
+  margin: 0 0 12px;
+  padding: 0 !important;
+  font: italic 400 34px/1.05 'Instrument Serif', Georgia, serif !important;
+  letter-spacing: -0.01em;
+}
+#portfolio .project-name a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 1px;
+}
+#portfolio .project-name a:hover,
+#portfolio .project-name a:focus {
+  color: var(--accent);
+  border-bottom-color: var(--ink);
+  text-decoration: none;
+}
+
+/* tags: one run of monospace text separated by slashes */
+#portfolio .portfolio-box-caption-content .project-category {
+  order: 1;
+  display: inline;
+  padding: 0 !important;
+  margin: 0;
+  font: 500 11px/1.7 'JetBrains Mono', ui-monospace, Menlo, monospace !important;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgba(22, 22, 22, 0.62);
+  background: none;
+  border: 0;
+  opacity: 1;
+}
+#portfolio .portfolio-box-caption-content .project-category::after {
+  content: "/";
+  margin: 0 7px;
+  color: var(--accent);
+}
+#portfolio .portfolio-box-caption-content .project-category:has(+ .project-name)::after {
+  content: none;
+}
+
+/* source link: small monospace call-to-action */
+#portfolio .project-code {
+  order: 2;
+  flex-basis: 100%;
+  margin-top: 14px;
+}
+#portfolio .project-code a {
+  font: 600 12px/1 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 2px;
+}
+#portfolio .project-code a::after {
+  content: " \2197";
+}
+#portfolio .project-code a:hover,
+#portfolio .project-code a:focus {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Phones: tiles are narrower; scale the type down so long tag lists fit. */
+@media (max-width: 575.98px) {
+  #portfolio .portfolio-box-caption-content { padding: 16px; }
+  #portfolio .project-name { font-size: 27px !important; margin-bottom: 8px; }
+  #portfolio .portfolio-box-caption-content .project-category { font-size: 10px !important; }
+  #portfolio .project-code { margin-top: 10px; }
+}
+
+/* Touch screens: no sticky lift after a tap. */
+@media (hover: none) {
+  #portfolio .portfolio-box:hover { transform: none; box-shadow: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #portfolio .portfolio-box,
+  #portfolio .portfolio-box img.img-fluid,
+  #portfolio .portfolio-box-caption,
+  .service-box,
+  .btn { transition: none; }
+}
+
+/* ───────────────────────────── video player (Project Storm demos) ───────────────────────────── */
+
+.video-dialog {
+  width: min(1100px, 94vw);
+  max-height: 92vh;
+  padding: 0;
+  border: 1.5px solid var(--ink);
+  border-radius: 0;
+  background: var(--paper);
+  box-shadow: 8px 8px 0 var(--accent);
+  overflow: hidden;
+}
+.video-dialog--portrait { width: min(420px, 94vw); }
+.video-dialog::backdrop { background: rgba(22, 22, 22, 0.78); }
+
+.video-dialog__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 14px;
+  border-bottom: 1.5px solid var(--ink);
+}
+.video-dialog__title {
+  font: 500 12px/1 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.video-dialog__close {
+  font: 600 12px/1 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: none;
+  border: 0;
+  padding: 6px 2px;
+  cursor: pointer;
+}
+.video-dialog__close:hover { color: var(--accent); }
+
+.video-dialog__video {
+  display: block;
+  width: 100%;
+  max-height: calc(92vh - 46px);
+  background: #000;
+}
+
