@@ -10,7 +10,6 @@ env:
   ENV: prod 
   DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-  ENVS: ${{ secrets.PROD_ENVS }}
   
 jobs:
   build:
@@ -21,7 +20,7 @@ jobs:
         run:
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: Generate .env file
-        run: echo "$ENVS" > .env
+        run: cp envs/prod.env .env   # public project URLs, committed (were the PROD_ENVS secret)
       - name: Build and Push to Docker Hub
         run: |
           bash build-docker.sh
